@@ -23,6 +23,7 @@ if place:
             images = {"Clear":"images/clear.png", "Clouds":"images/cloud.png", "Rain":"images/rain.png", "Snow":"images/snow.png"}
             image_path = [images[i] for i in sky_conditions]
             st.image(image_path, caption=dates, width=80)
+        st.write("Displayed data is from https://openweathermap.org/")
     except KeyError:
         prompt = f"{place} doesn't exist"
         st.write(prompt)
