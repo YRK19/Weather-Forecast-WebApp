@@ -2,9 +2,10 @@ import streamlit as st
 import plotly.express as px
 from backend import get_data
 
+st.set_page_config(layout='wide')
 st.title("Weather forecast for Next Days")
-place = st.text_input("Place: ")
-days = st.slider("Forecast Days", min_value=1, max_value=5, help="Select the number of days")
+place = st.text_input("Place: ", placeholder="Type country name")
+days = st.slider("Forecast Days", min_value=1, max_value=5, help="Select the number of forecast days")
 option = st.selectbox("Select data to view", ('Temperature', 'Sky'))
 st.subheader(f"{option} for the next {days} days in {place}")
 
@@ -25,5 +26,5 @@ if place:
             st.image(image_path, caption=dates, width=80)
         st.write("Displayed data is from https://openweathermap.org/")
     except KeyError:
-        prompt = f"{place} doesn't exist"
+        prompt = f"{place} country doesn't exist"
         st.write(prompt)
